@@ -152,29 +152,29 @@ The expected response from the model will be in JSON format, like this:
    ```bash
     brew install ollama
     ollama pull llama3.2
-    ```
+   ```
 
 ### 3. **Fine-tune the LLaMA model:**
    ```bash
     ollama fine-tune llama3.2 --input dataset.json --output llama3.2-finetuned
-    ```
+   ```
 
 ### 4. **Run the fine-tuned model:**
    ```bash
     ollama serve --model llama3.2-finetuned
-    ```
+   ```
 
 ### 5. **Run the API:**
    ```bash
     uvicorn main:app --host 0.0.0.0 --port 8000
-    ```
+   ```
 
 ### 6. **Test the chatbot using the API:**
    ```bash
     curl -X POST "http://localhost:8000/api/llama" \
     -H "Content-Type: application/json" \
     -d '{"query": "What is AI?"}'
-    ```
+   ```
 
 
 # Key Benefits
