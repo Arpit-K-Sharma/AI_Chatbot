@@ -24,7 +24,8 @@ This guide outlines the steps to set up a virtual environment, fine-tune the LLa
 2. Activate the virtual environment.
 3. Install Python dependencies.
 
-### Code:
+
+### Commands:
 ```bash
 # Create a virtual environment
 python -m venv venv
@@ -40,6 +41,8 @@ pip install --upgrade pip
 
 # Install required Python dependencies
 pip install -r requirements.txt
+
+```
 
 
 ## 2. Creating a Virtual Environment and Installing Dependencies
@@ -60,6 +63,8 @@ brew install ollama
 # Pull the LLaMA 3.2 model
 ollama pull llama3.2
 
+```
+
 
 # 3. Fine-Tuning the LLaMA Model
 
@@ -71,7 +76,7 @@ Fine-tuning allows customizing the LLaMA model to answer queries specific to you
   {"input": "What is AI?", "output": "AI stands for Artificial Intelligence."},
   {"input": "Define machine learning.", "output": "Machine learning is a subset of AI focusing on algorithms that learn from data."}
 ]
-
+```
 
 ## Steps:
 1. Prepare your dataset in JSON format.
@@ -84,14 +89,15 @@ ollama fine-tune llama3.2 --input dataset.json --output llama3.2-finetuned
 ## Parameters:
 - `--input`: Path to your dataset file
 - `--output`: Output path for the fine-tuned model
+```
 
 # 4. Running the Fine-Tuned Model Locally with Ollama
 
-Command:
+### Command:
 ```bash
 # Run the fine-tuned model
 ollama serve --model llama3.2-finetuned
-
+```
 
 # 5. Building an API with FastAPI
 
@@ -101,7 +107,7 @@ This guide demonstrates how to build a simple API to query the fine-tuned LLaMA 
 
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000
-
+```
 
 
 # 6. Using the API for Communication
@@ -116,7 +122,7 @@ You can send a POST request to the API using the following `curl` command:
 curl -X POST "http://localhost:8000/api/llama" \
 -H "Content-Type: application/json" \
 -d '{"query": "What is AI?"}'
-
+```
 
 ### Expected Response
 
@@ -127,39 +133,48 @@ The expected response from the model will be in JSON format, like this:
   "response": "AI stands for Artificial Intelligence."
 }
 
+```
 
 # 7. Complete Workflow
 
 ### Steps:
 
-1. **Set up the environment:**
+### 1. **Set up the environment:**
    ```bash
    python -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
+   ```
 
-2. **Install Ollama and pull the LLaMA model:**
+### 2. **Install Ollama and pull the LLaMA model:**
+
+
    ```bash
     brew install ollama
     ollama pull llama3.2
+    ```
 
-3. **Fine-tune the LLaMA model:**
+### 3. **Fine-tune the LLaMA model:**
    ```bash
     ollama fine-tune llama3.2 --input dataset.json --output llama3.2-finetuned
+    ```
 
-4. **Run the fine-tuned model:**
+### 4. **Run the fine-tuned model:**
    ```bash
     ollama serve --model llama3.2-finetuned
+    ```
 
-5. **Run the API:**
+### 5. **Run the API:**
    ```bash
     uvicorn main:app --host 0.0.0.0 --port 8000
+    ```
 
-6. **Test the chatbot using the API:**
+### 6. **Test the chatbot using the API:**
    ```bash
     curl -X POST "http://localhost:8000/api/llama" \
     -H "Content-Type: application/json" \
     -d '{"query": "What is AI?"}'
+    ```
 
 
 # Key Benefits
